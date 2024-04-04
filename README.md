@@ -2,4 +2,4 @@
 - Hugo Hérichon 🚀
 - Maël Renaud ⭐
 - Legriffon Noa 💖
-- Vallot Christophe 🧡💛💚💙💜🤎🖤🤍
+- Vallot Christophe (le plus beau des profs !!)🧡💛💚💙💜🤎🖤🤍
