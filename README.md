@@ -12,3 +12,9 @@ en fonction d'un code postal choisi.
 
 # URL plublic du projets:
 - https://goldybinks3.github.io/Projet-m-t-o/
+
+# Etapes
+1 Récuperer le code postal
+2 Boucler sur les données pour generer les différentes valeurs d'option
+3 Récuperer la commune (option) choisie pour l'utilisateur
+4 Extraire les données météo à afficher depuis le JSON
