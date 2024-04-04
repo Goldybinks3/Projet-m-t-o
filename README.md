@@ -1,4 +1,4 @@
-# Collaborateur:
+# Collaborateurs:
 - Hugo Hérichon 🚀
 - Maël Renaud ⭐
 - Legriffon Noa 💖
