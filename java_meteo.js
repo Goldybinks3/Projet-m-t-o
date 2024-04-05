@@ -5,9 +5,19 @@ function Recup_Villes(){
     return saisie
     }
 
-data.forEach((commune) => {
-        const option = document.createElement("comms");
-        comms.value = commune.code;
-        comms.textContent = commune.nom;
+const response = await fetch(
+    `https://geo.api.gouv.fr/communes?codePostal=${codePostal}`
+);
+
+function displayCommunes(data) {
+    data.forEach((commune) => {
+            const option = document.createElement("option");
+            option.value = commune.code;
+            option.textContent = commune.nom;
+    });
+}
+
+const data = await fetchCommunesByCodePostal(codePostal);
+displayCommunes(data);
 
 fetch('https://geo.api.gouv.fr/communes?codePostal=${saisie}')
