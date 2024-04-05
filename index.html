@@ -11,16 +11,18 @@
         <h1>Météo de votre commune !</h1>
     </header>
     <main>
-        <form id="weatherForm">
-            <label for="postalCode">Code Postal :</label>
-            <input type="text" id="postalCode" name="postalCode" required>
-            
-            <label for="city">Commune :</label>
-            <select id="city" name="city" required>
-             <!-- Les options des communes seront ajoutées dynamiquement via JavaScript -->
-            </select>
-            <button type="submit">Obtenir la météo</button>
-        </form>
+        <section id="ville">
+            <form id="weatherForm">
+                <label for="postalCode">Code Postal :</label>
+                <input type="text" id="postalCode" placeholder="Entrez un code postal..." required>
+                
+                <label for="city">Commune :</label>
+                <select id="city" required>
+                 <!-- Les options des communes seront ajoutées dynamiquement via JavaScript -->
+                </select>
+                <button type="submit">Obtenir la météo</button>
+            </form>
+        </section>
         <div id="weatherInfo">
             <!-- Les informations météo seront affichées ici -->
         </div>
