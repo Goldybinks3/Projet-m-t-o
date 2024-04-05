@@ -11,6 +11,7 @@
                 let saisie = document.getElementById("postalCode").value;
                 return saisie
                 }
+            console.log(saisie)
             fetch('https://geo.api.gouv.fr/communes?codePostal=${saisie}')
         }); 
     </script>
