@@ -10,12 +10,17 @@ body {
     line-height: 1.6;
     background-color: #f4f4f4;
     padding: 20px;
-    margin:20%
+    margin: 10%;
+    margin-left:30%;
+    margin-right:30%;
 }
 
 header {
+    background-color:#98b9dd;
     text-align: center;
     margin-bottom: 20px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
+    border-radius: 16px;
 }
 
 h1 {
@@ -26,7 +31,8 @@ main {
     background-color: #fff;
     padding: 20px;
     border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.5);
+    border-radius: 16px;
 }
 
 form {
@@ -42,7 +48,7 @@ input[type="text"],
 select {
     width: 100%;
     padding: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
@@ -74,4 +80,5 @@ footer {
     margin-top: 20px;
     padding-top: 20px;
     border-top: 1px solid #ccc;
+    
 }
