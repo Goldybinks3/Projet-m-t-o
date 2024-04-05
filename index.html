@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Météo Monstreueuuuuuuuuse</title>
     <link rel="stylesheet" href="style.css">
-    document.addEventListener("DOMContentLoaded", function() {
-        function Recup_Villes(){
-    let saisie = document.getElementById("postalCode").value;
-    return saisie
-    });
-
-fetch('https://geo.api.gouv.fr/communes?codePostal=${saisie}')
-
-    <script src = "PROJET-M-T-O/java_météo.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            function Recup_Villes(){
+                let saisie = document.getElementById("postalCode").value;
+                return saisie
+                }
+            fetch('https://geo.api.gouv.fr/communes?codePostal=${saisie}')
+        }); 
+    </script>
 </head>
 <body>
     <header>
