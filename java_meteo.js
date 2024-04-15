@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", async function() { // Attend que l
 
 //code de noa 
 
-const communeSelect = document.getElementById("city");
+//const communeSelect = document.getElementById("city");
 
 function Recup_Villes(){
     let saisie = document.getElementById("postalCode").value;
@@ -53,9 +53,9 @@ function displayCommunes(data) {
     });
 }
 
-const data = await fetchCommunesByCodePostal(codePostal);
-displayCommunes(data);
+//const data = await fetchCommunesByCodePostal(codePostal);
+//displayCommunes(data);
 
-fetch('https://geo.api.gouv.fr/communes?codePostal=${saisie}')
+//fetch('https://geo.api.gouv.fr/communes?codePostal=${saisie}')
 
 
