@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() { // Attend que la page html soit chargé
+document.addEventListener("DOMContentLoaded", async function() { // Attend que la page html soit chargé
     const codepostal = document.getElementById("postalCode"); // Récupère l'élément du code postal
     const communeSelect = document.getElementById("city"); // Récupère l'élément de la liste déroulante des communes
 
