@@ -9,9 +9,7 @@ body {
     margin: 10%;
     margin-left:30%;
     margin-right:30%;
-	background-position: center center;
-	background-repeat: no-repeat;
-	background-size: cover;
+
 }
 
 header {
@@ -20,7 +18,7 @@ header {
     margin-bottom: 20px;
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
     border-radius: 16px;
-	background: rgba(152, 185, 221, 0.9); 
+    background: rgba(152, 185, 221, 0.9); 
 }
 
 h1 {
@@ -31,7 +29,7 @@ main {
     background-color: #fff;
     padding: 20px;
     border-radius: 5px;
-	box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
     border-radius: 16px;
     margin: 0 auto;
@@ -85,7 +83,7 @@ footer {
     padding-bottom: 1px;
     border-top: 1px solid #ccc;
     max-width: 800px;
-	background: rgba(255, 255, 255, 0.5); 
-	border-radius: 5px;
-	margin-top: 20px;
+    background: rgba(255, 255, 255, 0.5); 
+    border-radius: 5px;
+    margin-top: 20px;
 }
