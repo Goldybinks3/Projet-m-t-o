@@ -1,35 +1,34 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Météo Monstreueuuuuuuuuse</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <header>
-        <h1>Météo de votre commune !</h1>
-    </header>
-    <main>
-        <section id="ville">
-            <form id="weatherForm" action="dummy">
-                <label for="postalCode">Code Postal :</label>
-                <input type="text" id="postalCode" placeholder="Entrez un code postal..." required>
-                <label for="city">Commune :</label>
-                <select id="city" required>
-                 <!-- Les options des communes seront ajoutées dynamiquement via JavaScript -->
-                </select>
-                <button type="submit">Obtenir la météo</button>
-            </form>
-        </section>
-        <div id="weatherInfo">
-            <!-- Les informations météo seront affichées ici -->
-        </div>
-    </main>
-    <footer>
-        <p>Crée par caca.com</p> 
-    </footer>
-	<script src="java_meteo.js"></script>
-
-</body>
+	<head>
+	    <meta charset="UTF-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <title>Météo Monstreueuuuuuuuuse</title>
+	    <link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+	    <header>
+	        <h1>Météo de votre commune !</h1>
+	    </header>
+	    <main>
+	        <section id="ville">
+	            <form id="InfoCommune" action="dummy">
+	                <label for="postalCode">Code Postal :</label>
+	                <input type="text" id="postalCode" placeholder="Entrez un code postal..." required>
+	                <label for="Commune">Commune :</label>
+	                <select id="Commune" required>
+	                 <!-- Les options des communes -->
+	                </select>
+	                <button type="submit">Obtenir la météo</button>
+	            </form>
+	        </section>
+	        <div id="InfoClimat">
+	            <!-- Les informations météo -->
+	        </div>
+	    </main>
+	    <footer>
+	        <p>Crée par Hugo, Noa, Maël</p> 
+	    </footer>
+		<script src="java_meteo.js"></script>
+	</body>
 </html>
