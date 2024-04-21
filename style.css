@@ -1,15 +1,13 @@
 body {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
     font-family: Arial, sans-serif;
     line-height: 1.6;
     background-color: #f4f4f4;
-    padding: 20;
-    margin: 10%;
-    margin-left:30%;
-    margin-right:30%;
-
+    
+    
+    margin-left:20%;
+    margin-right:20%;
+	
 }
 
 header {
@@ -18,7 +16,7 @@ header {
     margin-bottom: 20px;
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
     border-radius: 16px;
-    background: rgba(152, 185, 221, 0.9); 
+	background: rgba(152, 185, 221, 0.9); 
 }
 
 h1 {
@@ -29,7 +27,7 @@ main {
     background-color: #fff;
     padding: 20px;
     border-radius: 5px;
-   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+	box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
     border-radius: 16px;
     margin: 0 auto;
@@ -70,20 +68,96 @@ button:hover {
     background-color: #0056b3;
 }
 
-#weatherInfo {
+#InfoClimat {
     margin-top: 20px;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
+	display:grid;
+	grid-template-rows: 1fr 1fr 1fr ;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-template-areas:
+	"titre titre titre titre "
+	"tmin tmax prob heure"
+	"termo termo climat climat";
+	justify-items: center; 
+    align-items: center; 
+    gap: 20px; 
+    max-width: 800px; 
+	max-height: 400px;
+	
+	
+}
+#InfoClimat h2{
+	grid-area:titre;
 }
 
+#InfoClimat #tmin{
+	grid-area:tmin;
+	
+}
+#InfoClimat #climat{
+	grid-area:climat;
+	
+}
+#InfoClimat #termo{
+	grid-area:termo;
+	width: 77.75px; 
+	height: 174px;
+}
+#InfoClimat #tmax{
+	grid-area:tmax;
+	
+}
+#InfoClimat #prob{
+	grid-area:prob;
+	
+}
+#InfoClimat #heure{
+	grid-area:heure;
+	
+}
 footer {
     
     text-align: center;
     padding-bottom: 1px;
     border-top: 1px solid #ccc;
     max-width: 800px;
-    background: rgba(255, 255, 255, 0.5); 
-    border-radius: 5px;
-    margin-top: 20px;
+	background: rgba(255, 255, 255, 0.5); 
+	border-radius: 5px;
+	margin-top: 20px;
 }
+@media screen and (max-width: 850px) {
+    #InfoClimat {
+        display: grid;
+        grid-template-rows: auto auto auto auto;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            "titre titre"
+            "tmin termo"
+            "tmax termo"
+            "prob climat"
+            "heure climat";
+        justify-items: center;
+        align-items: center;
+        gap: 20px;
+        max-width: 100%;
+        max-height: none;
+    }
+
+    #InfoClimat #termo {
+        width: auto;
+        height: auto;
+    }
+
+    #InfoClimat #climat {
+        width: auto;
+        height: auto;
+    }
+	body {
+    margin-left:5%;
+    margin-right:5%;
+	
+	}
+}
+
