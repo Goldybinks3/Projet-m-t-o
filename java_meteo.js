@@ -1,64 +1,97 @@
-document.addEventListener("DOMContentLoaded", async function() { // Attend que la page html soit chargé
-    const codepostal = document.getElementById("postalCode"); // Récupère l'élément du code postal
-    const communeSelect = document.getElementById("city"); // Récupère l'élément de la liste déroulante des communes
-
-    codepostal.addEventListener("input", async function() { // Ajoute un écouteur d'événements pour le champ de saisie du code postal
-        const code = codepostal.value; // Récupère la valeur du champ de saisie du code postal
-        if (code.length >= 5) { // Vérifie si au moins 5 caractères sont entrés dans le code postal
-            const donnees = await Code(code); // Récupère les données des communes pour le code postal donné
-            commune(donnees); // Remplit la liste déroulante des communes avec les données récupérées
+document.addEventListener("DOMContentLoaded", function() {
+    let codepostal = document.getElementById("postalCode");
+    let communeSelect = document.getElementById("Commune"); 
+    let weatherForm = document.getElementById("InfoCommune"); 
+    let weatherInfo = document.getElementById("InfoClimat");
+//on a recupe tous les id des parti html pour y a rajouter des infos.
+	
+    codepostal.addEventListener("input", async function() {
+        let code = codepostal.value;//on prendre le code rentre postalCode
+        if (code.length >= 5) {//verfi si plus grand que 5
+            let communes = await getCommunes(code);// on vient recupere grace a lapi toutes les communes
+            fillCommune(communes);//on vient rajouter toutes le commune pour les mettre en option dans le code html
         }
     });
 
-    async function Code(codePostal) {
-        const response = await fetch(`https://geo.api.gouv.fr/communes?codePostal=${codePostal}`); // Envoie une requête pour obtenir les communes correspondant au code postal
-        const data = await response.json(); // Récupère les données de la réponse au format JSON
-        return data; // Renvoie les données
-    }
+    async function getCommunes(codePostal) {
+        let response = await fetch(`https://geo.api.gouv.fr/communes?codePostal=${codePostal}`);//requete api
+        let data = await response.json();//mis en point json
+        console.log("Données de la première API (communes):", data);//pour voir si les info passe bien
+        return data.map(commune => ({ nom: commune.nom, codeInsee: commune.code }));
+    } 
 
-    function commune(communes) {
-        communeSelect.innerHTML = ""; // Réinitialise les options de la liste déroulante des communes
-        communes.forEach((commune) => { // Parcourt toutes les communes
-            const option = document.createElement("option"); // Crée un nouvel élément d'option
-            option.value = commune.nom; // Définit la valeur de l'option sur le nom de la commune
-            option.textContent = commune.nom; // Définit le texte de l'option sur le nom de la commune
-            communeSelect.appendChild(option); // Ajoute l'option à la liste déroulante des communes
+    function fillCommune(communes) {
+        communeSelect.innerHTML = "";//on remet le fill a '0'
+        communes.forEach((commune) => {//pour toute les communes
+            let option = document.createElement("option");// on cree un ellement option 
+            option.value = commune.nom;// on rentre les valeur et textContent comme une option de base
+            option.textContent = commune.nom;
+            option.setAttribute('data-code-insee', commune.codeInsee); // on stocke le code INSEE pour plustard
+            communeSelect.appendChild(option);//puis on le rajoute dans loption 
         });
     }
 
+    weatherForm.addEventListener("submit", async function(event) {
+        event.preventDefault(); // Empêche le formulaire de se soumettre normalement (voir sur internet)
 
-    //code de noa 
+        let selectedOption = communeSelect.options[communeSelect.selectedIndex];//on prend l'option qui a etais choisi
+        let codeInsee = selectedOption.getAttribute('data-code-insee');//on la recupere dans un variable
+        let weatherData = await getClimat(codeInsee);//puis nous recuperons cest info 
+        ClimatInfo(weatherData);//puis nous traitons les données pour les afficher
+    });
 
-//const communeSelect = document.getElementById("city");
+    
 
-//function Recup_Villes(){
-  // let saisie = document.getElementById("postalCode").value;
-//return saisie
-//}
+    async function getClimat(codeInsee) {
+        let apiKey = "41c18754b83bd370551aaca5d9c94a67c998fb2a6969cd59aa1f33c6281db7b6";//cest un cle qui nous permet detrre autoriser a aller sur l'api
+        let response = await fetch(`https://api.meteo-concept.com/api/forecast/daily?insee=${codeInsee}&token=${apiKey}`);   //requete sur lapi
+        let data = await response.json();//mis en json
+        return data;//on retourne les données
+        
+    }
 
-//function fetchCommunesByCodePostal(codePostal) {
-    //const response = await fetch(
-      //  `https://geo.api.gouv.fr/communes?codePostal=${codePostal}`
-    //);
-    //const data = await response.json();
-  //  return data;
-//}
+    function ClimatInfo(weatherData) {  
+        let todayWeather = weatherData.forecast[0]; // Prend les données météorologiques pour aujourd'hui
 
-//function displayCommunes(data) {
-  //  data.forEach((commune) => {
-    //        const option = document.createElement("option");
-      //      option.value = commune.code;
-        //    option.textContent = commune.nom;
-    //});
-//}
+        let minTemp = todayWeather.tmin;
+        let maxTemp = todayWeather.tmax;
+        let rainProb = todayWeather.probarain;
+        let sunshineHours = todayWeather.sun_hours;
+		let termo; 
+		let climat;
 
-//const data = await fetchCommunesByCodePostal(codePostal);
-//displayCommunes(data);
+		if (maxTemp >= 25) {
+			termo = 'thermo2.png';
+		} else if (maxTemp >= 15 && maxTemp < 25) {
+			termo = 'thermo1.png';
+		} else {
+			termo = 'thermo.png';
+		}
+		
+		if (rainProb >= 50 && minTemp < 0) {
+			climat = 'neige.png';
+		} else if (rainProb >= 50) {
+			climat = 'pluie.png';
+		} else if (rainProb < 50 && rainProb >= 15) {
+			climat = 'nuage.png';
+		} else {
+			climat = 'soleil.png';
+		}
+		
+        let weatherList = ""
+		weatherInfo.innerHTML = "<h2>Météo pour aujourd'hui</h2>";
+        weatherInfo.innerHTML += `
+            <p id="tmin">Température minimale: ${minTemp}°C</p>
+            <p id="tmax">Température maximale: ${maxTemp}°C</p>
+			<img src="${termo}" alt="Thermomètre" id="termo">
+            <p id="prob">Probabilité de pluie: ${rainProb}%</p>
+            <p id="heure">Nombre d'heures d'ensoleillement: ${sunshineHours} heures</p>
+			<img src="${climat}" alt="climat" id="climat">
+        `;
 
-//fetch('https://geo.api.gouv.fr/communes?codePostal=${saisie}')
-
-
+        
+        
+        
+        console.log("Données météorologiques pour aujourd'hui:", todayWeather);//observer si les données sont bien
+    }
 });
-
-
-
