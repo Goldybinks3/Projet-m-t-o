@@ -7,11 +7,11 @@ document.addEventListener("DOMContentLoaded", function() {
 	
     codepostal.addEventListener("input", async function() {
         let code = codepostal.value;//on prendre le code rentre postalCode
-        if (code.length >= 5) {//verfi si plus grand que 5
+        if (/^\d{5}$/.test(code)) {//verfi si plus grand que 5
             let communes = await getCommunes(code);// on vient recupere grace a lapi toutes les communes
             fillCommune(communes);//on vient rajouter toutes le commune pour les mettre en option dans le code html
         }
-    });
+});
 
     async function getCommunes(codePostal) {
         let response = await fetch(`https://geo.api.gouv.fr/communes?codePostal=${codePostal}`);//requete api
