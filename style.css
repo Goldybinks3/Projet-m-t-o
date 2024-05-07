@@ -118,7 +118,7 @@ button:hover {
 	
 }
 footer {
-    
+    display : flex;
     text-align: center;
     padding-bottom: 1px;
     border-top: 1px solid #ccc;
@@ -157,6 +157,7 @@ footer {
 	body {
     margin-left:5%;
     margin-right:5%;
+    background-color: linear-gradient(to bottom right, blue, pink);
 	
 	}
 }
