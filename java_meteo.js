@@ -38,7 +38,10 @@ document.addEventListener("DOMContentLoaded", function() {
         let codeInsee = selectedOption.getAttribute('data-code-insee');//on la recupere dans un variable
         let weatherData = await getClimat(codeInsee);//puis nous recuperons cest info 
         ClimatInfo(weatherData);//puis nous traitons les données pour les afficher
+        let ville = document.getElementById("ville")
+        ville.classList.toggle("masque")
     });
+
 
     
 
@@ -88,9 +91,14 @@ document.addEventListener("DOMContentLoaded", function() {
             <p id="heure">Nombre d'heures d'ensoleillement: ${sunshineHours} heures</p>
 			<img src="${climat}" alt="climat" id="climat">
         `;
-
+        let reloadButton = document.createElement("nav")
+        reloadButton.textContent = "Nouvelle recherche";
+        document.body.appendChild(reloadButton);
+    
+        reloadButton.addEventListener("click", function () {
         
-        
+            location.reload()
+        });
         
         console.log("Données météorologiques pour aujourd'hui:", todayWeather);//observer si les données sont bien
     }
